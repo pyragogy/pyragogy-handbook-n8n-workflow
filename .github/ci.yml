@@ -1,0 +1,26 @@
+name: CI Workflow
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Lint Markdown
+        run: |
+          # Add markdown linting commands here (e.g., using markdownlint-cli)
+          echo "Running markdown lint..."
+          # npm install -g markdownlint-cli
+          # markdownlint .
+      - name: Lint n8n Workflow (Placeholder)
+        run: |
+          echo "Running n8n workflow lint (conceptual)..."
+          # This would involve a custom script to validate the workflow JSON
+          # For example, checking for specific node configurations, variable usage, etc.
