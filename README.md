@@ -47,7 +47,10 @@ The `pyragogy-handbook-n8n-workflow` transforms complexity into clarity by autom
   Built on n8n—easily adaptable to your own agents, triggers, and integrations.
 
 ---
+
 ## 🧬 Architecture
+
+`The workflow leverages **n8n** as its orchestration layer, connecting various services and AI models.
 
 ```mermaid
 graph TD
@@ -64,6 +67,8 @@ graph TD
     J --> K{Human Decision}
     K -- Approved --> L[PostgreSQL + GitHub Commit]
     K -- Rejected --> M[Loop Feedback or Log Rejection]
+
+---
 
 ## 🚀 Getting Started
 
