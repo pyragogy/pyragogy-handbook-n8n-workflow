@@ -1,154 +1,144 @@
-# 🧠💫 Pyragogy: When AI Meets Human Genius
+# Pyragogy Handbook n8n Workflow
 
-*The world's first AI writers' room for collaborative knowledge creation*
+> **Elevating Collaborative Intelligence**
+> The orchestration engine behind the AI-powered Pyragogy Handbook.
 
-Pyragogy is the first shared space where AI agents and human minds co-create living, versioned, and rhythmic knowledge.
-Imagine a writers’ room no longer limited to humans, but populated by specialized agents proposing ideas, refining drafts, sparking visions, and requesting feedback. Every contribution becomes a node of meaning. Every interaction is a step toward emergent, co-constructed insight.
-
-This project isn’t just about automation—it’s a laboratory of symbiotic intelligence, a peeragogical movement, and a prototype of ethical infrastructure for collective learning, amplified by AI.
-
----
-
-## 💡 The Big Idea
-
-**What if AI didn't replace human creativity, but amplified it?**
-
-We built a digital writers' room where 7 AI agents collaborate with humans to create knowledge that's more insightful, nuanced, and genuinely useful than either could produce alone.
-
-**Real talk:** This isn't another "AI writes content" tool. This is AI + humans = magic ✨
-
+[![CI Status](https://github.com/pyragogy/pyragogy-handbook-n8n-workflow/actions/workflows/test.yml/badge.svg)](https://github.com/pyragogy/pyragogy-handbook-n8n-workflow/actions)
+[![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
+[![n8n Version](https://img.shields.io/badge/n8n-1.0%2B-blue.svg)](https://n8n.io/)
+[![Language](https://img.shields.io/badge/lang-Markdown-blue.svg)](#)
 
 ---
 
-## 🎬 How It Actually Works
+## 🧠 Overview
 
-### The Cast 🎭
+This repository contains the core **n8n automation workflow** that powers the AI-driven co-authoring process of the **Pyragogy Handbook**. It is a modular, scalable, and open-source system designed to orchestrate multiple AI agents—alongside human contributors—to collaboratively draft, refine, validate, and persist high-quality Markdown-based knowledge.
 
-**7 AI Agents, Each With Superpowers:**
-- 🔍 **The Summarizer** - "Let me break this down for you"
-- ✨ **The Synthesizer** - "Here's what this could become"
-- 🎯 **The Critic** - "But have you considered..."
-- 🧩 **The Connector** - "This reminds me of..."
-- 🔧 **The Optimizer** - "We could do this better"
-- 🌟 **The Guide** - "Welcome! Here's how to start"
-- 📚 **The Archivist** - "Let me save this properly"
-
-### The Magic Moment ⚡
-
-1. **You drop an idea** (literally just type it in)
-2. **AI agents huddle** and bounce ideas off each other
-3. **A human reviewer** (maybe you!) adds the secret sauce
-4. **Ideas evolve** through natural conversation
-5. **Something beautiful emerges** 🌱
+> As a cornerstone of [Pyragogy.org](https://pyragogy.org), this workflow exemplifies a new paradigm for AI-human co-creation in the context of peer learning.
 
 ---
 
-## 🚀 Try It Now (Seriously, It's Easy)
+## 🎯 Purpose
 
-```bash
-# Get it running in 30 seconds
-git clone https://github.com/pyragogy/pyragogy-handbook-n8n-workflow.git
-cd pyragogy-handbook-n8n-workflow
-cp .env.template .env
-# Add your OpenAI key to .env
-docker-compose up -d
+The `pyragogy-handbook-n8n-workflow` transforms complexity into clarity by automating:
+
+* Distributed writing tasks across AI agents
+* Quality control and review cycles
+* Semantic metadata management
+* Multi-channel persistence and collaboration
+
+---
+
+## ✨ Key Features
+
+* **Multi-Agent Orchestration**
+  Coordinate specialized agents (e.g., Summarizer, Synthesizer, QA Agent) via a single automated workflow.
+
+* **Automated Markdown Generation**
+  Draft and refine handbook sections dynamically from human prompts or AI insights.
+
+* **Cognitive Feedback Loops**
+  Integrate human and AI feedback phases to ensure accuracy and depth.
+
+* **Versioning & Storage**
+  Syncs with GitHub (for version control) and PostgreSQL/Supabase (for structured storage and queryability).
+
+* **Composable & Extensible**
+  Built on n8n—easily adaptable to your own agents, triggers, and integrations.
+
+---
+
+## 🧬 Architecture
+
+```mermaid
+graph TD
+    A[Trigger] --> B{New Idea / Update}
+    B --> C[Summarizer Agent]
+    C --> D[Synthesizer Agent]
+    D --> E[Content Validator]
+    E -- Valid --> F[Human Review]
+    F --> G[GitHub Repository]
+    G --> H[PostgreSQL / Supabase]
+    E -- Invalid --> I[AI Feedback Loop]
+    I --> C
 ```
 
-**That's it.** Open [localhost:5678](http://localhost:5678) and start creating.
+---
+
+## 🚀 Getting Started
+
+### Requirements
+
+* A running **n8n** instance (self-hosted or via cloud)
+* API access to LLMs (e.g., OpenAI, Anthropic, etc.)
+* A **GitHub** repo for storing content
+* A **PostgreSQL** database (Supabase optional)
 
 ---
 
-## 🎯 Who's This For?
+### Installation
 
-### 🧑‍💻 **Developers**
-"I want to see AI collaboration in action"
+```bash
+git clone https://github.com/pyragogy/pyragogy-handbook-n8n-workflow.git
+cd pyragogy-handbook-n8n-workflow
+```
 
-### 👩‍🏫 **Educators** 
-"I'm curious about AI-human co-creation"
+1. Import the workflow into your n8n instance
+   → Go to **Workflows > Import from File**
+   → Choose `workflow.json` from this repo
 
-### 🤔 **Curious Humans**
-"This sounds interesting but I'm not technical"
+2. Configure credentials for:
 
-### 🚀 **Pioneers**
-"I want to help build the future of learning"
+   * OpenAI or other LLM providers
+   * GitHub (with write access token)
+   * PostgreSQL/Supabase (connection string)
 
-**All welcome. No PhD required.**
-
----
-
-## 🌟 Why People Are Excited
-
-> *"This is the first AI tool that actually feels collaborative instead of extractive"* - Sarah, Educator
-
-> *"The agents genuinely surprise me with connections I wouldn't have made"* - Alex, Developer
-
-> *"Finally, AI that makes humans more creative, not less"* - Jordan, Writer
+3. Adjust environment variables, repo names, and database config inside workflow nodes.
 
 ---
 
-## 🤝 Jump In
+## 🛠️ Usage
 
-### 🎨 **Create Something**
-Use the simple web interface - no JSON, no complexity
+Once configured, you can:
 
-### 🔧 **Improve Something**
-The code is all here, waiting for your ideas
-
-### 💬 **Just Chat**
-Join our Discord and see what others are building
-
-### 📖 **Learn More**
-- [How the agents actually work](docs/improved_documentation.md)
-- [The technical deep dive](docs/architecture-notes.md)
-- [Setup monitoring](monitoring/README.md)
+* Trigger the workflow manually or via webhook/scheduler
+* Send a content idea or update
+* Let agents generate, synthesize, validate, and persist the content
+* Review/edit final output on GitHub
+* Analyze metadata or query it from your PostgreSQL/Supabase backend
 
 ---
 
-## 🚨 Fair Warning
+## 🌐 External Resources
 
-This project is **addictive**. You might find yourself:
-- Having conversations with AI agents
-- Getting genuinely excited about collaborative intelligence
-- Believing that human-AI partnership is the future
-- Contributing more than you planned
-
-*You've been warned* 😉
+* 🔗 [Pyragogy.org](https://pyragogy.org) – The ecosystem behind the vision
+* 📘 [n8n Docs](https://docs.n8n.io) – Workflow orchestration platform
+* 📜 *Pyragogy Manifesto* – Coming soon
+* 📚 *Live Handbook Output* – Coming soon
 
 ---
 
-## 🌍 The Bigger Picture
+## 🤝 Contributing
 
-We're not just building a tool. We're prototyping a future where:
-- **Learning is collaborative** (humans + AI working together)
-- **Knowledge emerges** (instead of being dictated)
-- **Everyone can contribute** (no gatekeepers)
-- **Creativity is amplified** (not automated away)
+We welcome contributions from:
 
-**This is bigger than a handbook. This is a new way of thinking.**
+* Researchers
+* Technical writers
+* LLM & n8n developers
+* Workflow automation geeks
 
----
+**Get Involved:**
 
-## 💝 Built With Love By
+* 🐛 Report bugs via [GitHub Issues](https://github.com/pyragogy/pyragogy-handbook-n8n-workflow/issues)
+* 💡 Suggest features or agent roles
+* 📦 Submit pull requests with fixes or new modules
 
-**The Pyragogy Community** - Educators, developers, and dreamers who believe learning should be a creative act
-
-**Special thanks to:**
-- The n8n team for the incredible platform
-- OpenAI for the AI that makes it possible
-- Every contributor who's helped shape this vision
+Read our [Contributing Guidelines](CONTRIBUTING.md) (coming soon).
 
 ---
 
-## 🚀 Ready to Start?
+## ❤️ Acknowledgements
 
-**Three ways to begin:**
+Made with ♥ by [Pyragogy.ai](https://pyragogy.org)
+Building bridges between cognition, automation, and peer learning.
 
-1. **🎮 [Try the Demo](http://demo.pyragogy.org)** - See it in action
-2. **💬 [Join Discord](https://discord.gg/pyragogy)** - Meet the community  
-3. **⚡ [Clone & Run](#-try-it-now-seriously-its-easy)** - Get your hands dirty
-
----
-
-**MIT License** | **Questions?** [info@pyragogy.org](mailto:info@pyragogy.org) | **Star us if you're inspired** ⭐
-
-*Because the future of learning is collaborative* 🌱
