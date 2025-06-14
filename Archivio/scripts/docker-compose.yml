@@ -1,0 +1,59 @@
+version: '3.8'
+
+services:
+  n8n:
+    image: n8n.io/n8n
+    restart: always
+    ports:
+      - "5678:5678"
+    environment:
+      - N8N_BASIC_AUTH_USER=${N8N_BASIC_AUTH_USER}
+      - N8N_BASIC_AUTH_PASSWORD=${N8N_BASIC_AUTH_PASSWORD}
+      - N8N_HOST=${N8N_HOST}
+      - N8N_PORT=${N8N_PORT}
+      - WEBHOOK_URL=${N8N_WEBHOOK_URL} # Public URL for webhooks
+      - DB_TYPE=postgresdb
+      - DB_POSTGRESDB_HOST=${POSTGRES_HOST}
+      - DB_POSTGRESDB_PORT=${POSTGRES_PORT}
+      - DB_POSTGRESDB_DATABASE=${POSTGRES_DB}
+      - DB_POSTGRESDB_USER=${POSTGRES_USER}
+      - DB_POSTGRESDB_PASSWORD=${POSTGRES_PASSWORD}
+      - QUEUE_TYPE=redis
+      - QUEUE_REDIS_HOST=${REDIS_HOST}
+      - QUEUE_REDIS_PORT=${REDIS_PORT}
+      # OpenAI API Key for agents
+      - OPENAI_API_KEY=${OPENAI_API_KEY}
+      # GitHub PAT and repo details for archiving
+      - GITHUB_ACCESS_TOKEN=${GITHUB_ACCESS_TOKEN}
+      - GITHUB_REPOSITORY_OWNER=${GITHUB_REPOSITORY_OWNER}
+      - GITHUB_REPOSITORY_NAME=${GITHUB_REPOSITORY_NAME}
+      # Slack Webhook for notifications
+      - SLACK_WEBHOOK_URL=${SLACK_WEBHOOK_URL}
+      # Email settings for human-in-the-loop review
+      - N8N_EMAIL_SENDER=${EMAIL_SENDER}
+      - N8N_EMAIL_CREDENTIAL_ID=${EMAIL_CREDENTIAL_ID} # n8n credential ID for email sender
+    volumes:
+      - ~/.n8n:/home/node/.n8n
+    depends_on:
+      - postgres
+      - redis
+
+  postgres:
+    image: postgres:13
+    restart: always
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    volumes:
+      - pg_data:/var/lib/postgresql/data
+
+  redis:
+    image: redis:6-alpine
+    restart: always
+    volumes:
+      - redis_data:/data
+
+volumes:
+  pg_data:
+  redis_data:

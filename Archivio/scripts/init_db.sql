@@ -1,0 +1,27 @@
+-- SQL script to initialize the Postgres database schema for Pyragogy Handbook.
+-- This file should contain CREATE TABLE statements for:
+-- - handbook_entries (id, title, content, version, created_by, tags, phase, rhythm, created_at, updated_at)
+-- - agent_contributions (id, entry_id, agent_name, contribution_type, details (JSONB), created_at)
+
+-- Example:
+-- CREATE TABLE IF NOT EXISTS handbook_entries (
+--     id SERIAL PRIMARY KEY,
+--     title VARCHAR(255) NOT NULL,
+--     content TEXT NOT NULL,
+--     version INT DEFAULT 1,
+--     created_by VARCHAR(255) DEFAULT 'AI Village',
+--     tags TEXT[],
+--     phase VARCHAR(50) DEFAULT 'draft',
+--     rhythm VARCHAR(50) DEFAULT 'on-demand',
+--     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP,
+--     updated_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+-- );
+
+-- CREATE TABLE IF NOT EXISTS agent_contributions (
+--     id SERIAL PRIMARY KEY,
+--     entry_id INT REFERENCES handbook_entries(id),
+--     agent_name VARCHAR(255) NOT NULL,
+--     contribution_type VARCHAR(255) NOT NULL,
+--     details JSONB,
+--     created_at TIMESTAMP WITH TIME ZONE DEFAULT CURRENT_TIMESTAMP
+-- );

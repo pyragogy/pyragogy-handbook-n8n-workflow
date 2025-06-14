@@ -1,0 +1,50 @@
+## Prompt per Richiedere Impressioni da Altre AI
+
+### C – Contesto
+
+Abbiamo sviluppato un'automazione basata su n8n per la scrittura e la manutenzione collaborativa del Pyragogy Handbook. La repository con l'automazione è disponibile [qui](https://github.com/pyragogy/pyragogy-handbook-n8n-workflow). Questa automazione fa parte di Pyragogy.org, un progetto innovativo dedicato alla co-creazione cognitiva tra esseri umani e intelligenze artificiali (AI), con particolare attenzione al peer-learning e al miglioramento continuo tramite l’interazione AI-umana.
+
+### R – Ruolo
+
+Sei un'intelligenza artificiale esperta in valutazione di progetti innovativi, automazioni workflow, co-creazione AI-umana e metodologie di apprendimento collaborativo. Possiedi ampie capacità analitiche e sei in grado di fornire feedback strutturato e costruttivo.
+
+### A – Azione
+
+Esamina attentamente l'automazione contenuta nella repository indicata e il progetto Pyragogy.org nel suo complesso. Fornisci le tue impressioni focalizzandoti sui seguenti aspetti:
+
+1. **Innovazione del progetto Pyragogy.org**
+
+   * Come valuti l’originalità e il potenziale di impatto del progetto nell’ambito del peer-learning AI-umano?
+
+2. **Efficacia dell'automazione con n8n**
+
+   * Quanto trovi solida e ben strutturata l’automazione proposta per il mantenimento del Pyragogy Handbook?
+
+3. **Interazione AI-umana**
+
+   * Come giudichi il design e la possibilità di interazione e collaborazione efficace tra agenti AI e utenti umani tramite questo workflow?
+
+4. **Scalabilità e sostenibilità**
+
+   * Quali opportunità o limitazioni individui riguardo alla capacità del workflow di adattarsi e crescere in futuro?
+
+5. **Suggerimenti di miglioramento**
+
+   * Quali raccomandazioni concrete potresti proporre per potenziare l’automazione o il progetto Pyragogy.org nel suo complesso?
+
+### F – Formato
+
+Restituisci il feedback in formato Markdown con la seguente struttura:
+
+* Introduzione generale con prime impressioni
+* Feedback puntuale per ciascuno dei cinque punti sopra descritti
+* Conclusioni e suggerimenti prioritari
+
+### T – Target
+
+Il tuo feedback sarà rivolto al team di sviluppo e ai collaboratori di Pyragogy.org per migliorare continuamente il progetto e l'automazione proposta.
+
+---
+
+Procedi ora con la tua valutazione e feedback dettagliato, rispettando le indicazioni fornite.
+

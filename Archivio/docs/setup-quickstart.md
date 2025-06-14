@@ -5,7 +5,7 @@ Pyragogy n8n Co-Authoring Workflow locally using Docker.
 
 ---
 
-# Guida all'Installazione Rapida (IT)
+# Guida all'Installazione Rapida
 
 Questa guida fornisce istruzioni dettagliate su come configurare ed eseguire
 localmente il Workflow di Co-Authoring n8n di Pyragogy utilizzando Docker.

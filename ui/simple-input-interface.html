@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pyragogy Handbook - Input Interface</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+            padding: 40px;
+            max-width: 600px;
+            width: 100%;
+        }
+
+        .header {
+            text-align: center;
+            margin-bottom: 30px;
+        }
+
+        .header h1 {
+            color: #333;
+            font-size: 2.5em;
+            margin-bottom: 10px;
+            font-weight: 300;
+        }
+
+        .header p {
+            color: #666;
+            font-size: 1.1em;
+            line-height: 1.6;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 8px;
+            color: #333;
+            font-weight: 500;
+            font-size: 1.1em;
+        }
+
+        input[type="text"], textarea, select {
+            width: 100%;
+            padding: 15px;
+            border: 2px solid #e1e5e9;
+            border-radius: 10px;
+            font-size: 16px;
+            transition: border-color 0.3s ease;
+            font-family: inherit;
+        }
+
+        input[type="text"]:focus, textarea:focus, select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        textarea {
+            resize: vertical;
+            min-height: 120px;
+        }
+
+        .tags-input {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 8px;
+            margin-top: 10px;
+        }
+
+        .tag {
+            background: #667eea;
+            color: white;
+            padding: 5px 12px;
+            border-radius: 20px;
+            font-size: 14px;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+
+        .tag .remove {
+            cursor: pointer;
+            font-weight: bold;
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin-top: 10px;
+        }
+
+        input[type="checkbox"] {
+            width: 20px;
+            height: 20px;
+            accent-color: #667eea;
+        }
+
+        .submit-btn {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            border: none;
+            padding: 15px 30px;
+            border-radius: 10px;
+            font-size: 1.1em;
+            font-weight: 500;
+            cursor: pointer;
+            width: 100%;
+            transition: transform 0.2s ease, box-shadow 0.2s ease;
+        }
+
+        .submit-btn:hover {
+            transform: translateY(-2px);
+            box-shadow: 0 10px 20px rgba(102, 126, 234, 0.3);
+        }
+
+        .submit-btn:disabled {
+            opacity: 0.6;
+            cursor: not-allowed;
+            transform: none;
+            box-shadow: none;
+        }
+
+        .status {
+            margin-top: 20px;
+            padding: 15px;
+            border-radius: 10px;
+            text-align: center;
+            font-weight: 500;
+            display: none;
+        }
+
+        .status.success {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .status.error {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .status.loading {
+            background: #d1ecf1;
+            color: #0c5460;
+            border: 1px solid #bee5eb;
+        }
+
+        .help-text {
+            font-size: 14px;
+            color: #666;
+            margin-top: 5px;
+            line-height: 1.4;
+        }
+
+        @media (max-width: 768px) {
+            .container {
+                padding: 20px;
+                margin: 10px;
+            }
+
+            .header h1 {
+                font-size: 2em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🤖 Pyragogy Handbook</h1>
+            <p>Simplified interface for submitting new ideas to the AI co-authoring workflow</p>
+        </div>
+
+        <form id="handbookForm">
+            <div class="form-group">
+                <label for="title">Chapter Title</label>
+                <input type="text" id="title" name="title" required placeholder="e.g. Introduction to Multi-Agent Orchestration">
+                <div class="help-text">Enter a descriptive title for the new Handbook chapter</div>
+            </div>
+
+            <div class="form-group">
+                <label for="input">Content/Initial Idea</label>
+                <textarea id="input" name="input" required placeholder="Describe your idea, provide raw content or key points you'd like to see developed in the chapter..."></textarea>
+                <div class="help-text">Provide initial content, ideas or key points for the AI agents to elaborate</div>
+            </div>
+
+            <div class="form-group">
+                <label for="tags">Tags</label>
+                <input type="text" id="tagsInput" placeholder="Add a tag and press Enter">
+                <div class="help-text">Add tags to categorize the content (press Enter after each tag)</div>
+                <div class="tags-input" id="tagsContainer"></div>
+            </div>
+
+            <div class="form-group">
+                <label for="phase">Phase</label>
+                <select id="phase" name="phase">
+                    <option value="draft">Draft</option>
+                    <option value="review">In Review</option>
+                    <option value="final">Final</option>
+                </select>
+                <div class="help-text">Select the content phase in the Handbook lifecycle</div>
+            </div>
+
+            <div class="form-group">
+                <label for="rhythm">Cognitive Rhythm</label>
+                <select id="rhythm" name="rhythm">
+                    <option value="on-demand">On Demand</option>
+                    <option value="scheduled">Scheduled</option>
+                    <option value="continuous">Continuous</option>
+                </select>
+                <div class="help-text">Defines the processing and update rhythm of the content</div>
+            </div>
+
+            <div class="form-group">
+                <div class="checkbox-group">
+                    <input type="checkbox" id="requireHitl" name="requireHitl" checked>
+                    <label for="requireHitl">Require Human Review (HITL)</label>
+                </div>
+                <div class="help-text">If checked, the generated content will require human approval before archiving</div>
+            </div>
+
+            <div class="form-group">
+                <label for="n8nUrl">n8n Webhook URL</label>
+                <input type="text" id="n8nUrl" name="n8nUrl" value="http://localhost:5678/webhook/pyragogy/process" placeholder="http://localhost:5678/webhook/pyragogy/process">
+                <div class="help-text">n8n webhook URL to send the request (edit if needed)</div>
+            </div>
+
+            <button type="submit" class="submit-btn">🚀 Submit to AI Workflow</button>
+        </form>
+
+        <div id="status" class="status"></div>
+    </div>
+
+    <script>
+        const tagsInput = document.getElementById('tagsInput');
+        const tagsContainer = document.getElementById('tagsContainer');
+        let tags = [];
+
+        tagsInput.addEventListener('keypress', function(e) {
+            if (e.key === 'Enter') {
+                e.preventDefault();
+                const tag = this.value.trim();
+                if (tag && !tags.includes(tag)) {
+                    tags.push(tag);
+                    renderTags();
+                    this.value = '';
+                }
+            }
+        });
+
+        function renderTags() {
+            tagsContainer.innerHTML = '';
+            tags.forEach((tag, index) => {
+                const tagElement = document.createElement('div');
+                tagElement.className = 'tag';
+                tagElement.innerHTML = `
+                    ${tag}
+                    <span class="remove" onclick="removeTag(${index})">×</span>
+                `;
+                tagsContainer.appendChild(tagElement);
+            });
+        }
+
+        function removeTag(index) {
+            tags.splice(index, 1);
+            renderTags();
+        }
+
+        document.getElementById('handbookForm').addEventListener('submit', async function(e) {
+            e.preventDefault();
+
+            const statusDiv = document.getElementById('status');
+            const submitBtn = document.querySelector('.submit-btn');
+
+            statusDiv.className = 'status loading';
+            statusDiv.style.display = 'block';
+            statusDiv.textContent = '🔄 Sending to n8n workflow...';
+            submitBtn.disabled = true;
+
+            const formData = new FormData(this);
+            const data = {
+                title: formData.get('title'),
+                input: formData.get('input'),
+                tags: tags,
+                phase: formData.get('phase'),
+                rhythm: formData.get('rhythm'),
+                requireHitl: formData.get('requireHitl') === 'on'
+            };
+
+            const n8nUrl = formData.get('n8nUrl');
+
+            try {
+                const response = await fetch(n8nUrl, {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                    },
+                    body: JSON.stringify(data)
+                });
+
+                if (response.ok) {
+                    statusDiv.className = 'status success';
+                    statusDiv.textContent = '✅ Successfully submitted! The AI workflow is processing the content.';
+                    this.reset();
+                    tags = [];
+                    renderTags();
+                } else {
+                    throw new Error(`HTTP Error: ${response.status}`);
+                }
+            } catch (error) {
+                statusDiv.className = 'status error';
+                statusDiv.textContent = `❌ Submission failed: ${error.message}. Ensure n8n is running and the URL is correct.`;
+            } finally {
+                submitBtn.disabled = false;
+            }
+        });
+
+        const exampleTags = ['AI', 'automation', 'n8n'];
+        tags = [...exampleTags];
+        renderTags();
+    </script>
+</body>
+</html>
