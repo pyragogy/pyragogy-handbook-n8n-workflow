@@ -3,7 +3,7 @@
 > **Elevating Collaborative Intelligence**
 > The orchestration engine behind the AI-powered Pyragogy Handbook.
 
-[![CI Status](https://github.com/pyragogy/pyragogy-handbook-n8n-workflow/actions/workflows/test.yml/badge.svg)](https://github.com/pyragogy/pyragogy-handbook-n8n-workflow/actions)
+
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![n8n Version](https://img.shields.io/badge/n8n-1.0%2B-blue.svg)](https://n8n.io/)
 [![Language](https://img.shields.io/badge/lang-Markdown-blue.svg)](#)
@@ -52,16 +52,20 @@ The `pyragogy-handbook-n8n-workflow` transforms complexity into clarity by autom
 
 ```mermaid
 graph TD
-    A[Trigger] --> B{New Idea / Update}
-    B --> C[Summarizer Agent]
-    C --> D[Synthesizer Agent]
-    D --> E[Content Validator]
-    E -- Valid --> F[Human Review]
-    F --> G[GitHub Repository]
-    G --> H[PostgreSQL / Supabase]
-    E -- Invalid --> I[AI Feedback Loop]
-    I --> C
-```
+    A[Webhook Trigger] --> B[Meta-Orchestrator]
+    B --> C[Summarizer]
+    C --> D[Synthesizer]
+    D --> E[Peer Reviewer]
+    E --> F[Sensemaking Agent]
+    F --> G[Prompt Engineer]
+    G --> H[Consensus Check]
+    H -- Major Issue --> D
+    H -- OK --> I[Add Metadata + Review Content]
+    I --> J[Human Approval Email]
+    J --> K{Human Decision}
+    K -- Approved --> L[PostgreSQL + GitHub Commit]
+    K -- Rejected --> M[Loop Feedback or Log Rejection]
+
 
 ---
 
