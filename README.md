@@ -340,23 +340,14 @@ npm run lint
 
 ## 📚 Resources & Documentation
 
-### Essential Reading
+### Reading
 
 * 📖 [n8n Documentation](https://docs.n8n.io) - Comprehensive workflow automation guide
-* 🧠 [AI Agent Design Patterns](https://pyragogy.org/patterns) - Best practices for multi-agent systems
-* 🔄 [Workflow Optimization Guide](https://pyragogy.org/optimization) - Performance tuning strategies
 
 ### Community
 
 * 💬 [Discord Server](https://discord.gg/pyragogy) - Real-time community discussions
-* 📧 [Mailing List](https://groups.google.com/g/pyragogy) - Monthly updates and announcements
-* 🐦 [Twitter](https://twitter.com/pyragogy) - Latest news and insights
-
-### Support
-
-* 🐛 [GitHub Issues](https://github.com/pyragogy/pyragogy-handbook-n8n-workflow/issues) - Bug reports and feature requests
-* 📖 [Wiki](https://github.com/pyragogy/pyragogy-handbook-n8n-workflow/wiki) - Extended documentation and tutorials
-* 💡 [Discussions](https://github.com/pyragogy/pyragogy-handbook-n8n-workflow/discussions) - Community Q&A
+* 📧 [Mailing List](https://docs.pyragogy.org/core/join/) - Monthly updates and announcements
 
 ---
 
@@ -371,9 +362,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 ### Core Team
 
 * **Project Lead**: [Fabrizio Terzi] - Vision and architecture
-* **Technical Lead**: [Name] - n8n workflow development
-* **AI Specialist**: [Name] - Agent design and optimization
-* **Community Manager**: [Name] - Documentation and support
+* **Technical Lead**: [PeerZhong 朋中] - n8n workflow development
 
 ### Special Thanks
 
