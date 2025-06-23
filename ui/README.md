@@ -4,7 +4,7 @@ This directory contains a simplified web user interface to interact with the Pyr
 
 ## Files
 
-* `simple-input-interface.html` – A complete web interface to submit new ideas to the workflow
+* `simple-input-interface.html` – A simple web interface to submit new ideas to the workflow
 
 ## How to Use
 
